@@ -1,2 +1,0 @@
-asdjiasjodias = 'asdasda'
-asdujihasugydui = 'asdasd'
