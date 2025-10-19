@@ -2,9 +2,8 @@ class CipherMaster:
     alphabet = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя'
     
     def cipher(self, original_text, shift):
-        # Метод должен возвращать зашифрованный текст 
-        # с учетом переданного смещения shift.
-        ...
+         for leter in original_text:
+             
     
     
     def decipher(self, cipher_text, shift):
