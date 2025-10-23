@@ -1,40 +1,20 @@
-class Employee:
-    vacation_days = 28
+class Customer:
+    def __init__(self, name):
+        self.name = name
+        # Добавьте сюда атрибут "скидка" со значением по умолчанию 10.
+        self.__discount = 10
 
-    def __init__(self, first_name, second_name, gender):
-        self.first_name = first_name
-        self.second_name = second_name
-        self.gender = gender
-        self.remaining_vacation_days = Employee.vacation_days
+    # Реализуйте методы get_price() и set_discount().
+    def get_price(self, price):
+        result = round(price * (1 - self.__discount / 100), 2)
+        return result
 
-    def consume_vacation(self, days):
-        self.remaining_vacation_days -= days
+    def set_discount(self, new_discount):
+        if new_discount > 80:
+            new_discount = 80
+        self.__discount = new_discount
 
-    def get_vacation_details(self):
-        return f'Остаток отпускных дней: {self.remaining_vacation_days}.'
-
-
-# Расширьте класс Employee, создав классы FullTimeEmployee и PartTimeEmployee.
-class FullTimeEmployee(Employee):
-    def __init__(self, first_name, second_name, gender):
-        super().__init__(first_name, second_name, gender)
-
-    def get_unpaid_vacation(self, startdate: str, duration: int) -> str:
-        return (
-            f'Начало неоплачиваемого отпуска: {startdate}, '
-            f'продолжительность: {duration} дней.'
-        )
-
-
-class PartTimeEmployee(Employee):
-    vacation_days = 14
-
-    def __init__(self, first_name, second_name, gender):
-        super().__init__(first_name, second_name, gender)
-        self.remaining_vacation_days = self.vacation_days
-
-# Пример использования:
-full_time_employee = FullTimeEmployee('Роберт', 'Крузо', 'м')
-print(full_time_employee.get_unpaid_vacation('2023-07-01', 5))
-part_time_employee = PartTimeEmployee('Алёна', 'Пятницкая', 'ж')
-print(part_time_employee.get_vacation_details())
+customer = Customer("Иван Иванович")
+customer.get_price(100)
+customer.set_discount(20)
+customer.get_price(100)
